@@ -7,6 +7,8 @@
         :image="demo.cardProps.image"
         :title="demo.cardProps.title"
         :labels="demo.cardProps.labels"
+        @clickButton="clickButtonDemo"
+        @clickLabel="clickLabelsDemo"
       >
         <template #title>Create Vue.js</template>
         <template #description>
@@ -111,6 +113,14 @@ export default {
   components: {
     TvCard,
     TvDemo,
+  },
+  methods: {
+    clickButtonDemo() {
+      console.log("clickButtonDemo");
+    },
+    clickLabelsDemo(label) {
+      console.log("clickButtonDemoLabels", label);
+    },
   },
 };
 </script>

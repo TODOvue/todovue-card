@@ -10,11 +10,12 @@
         </div>
         <div class="card-content_label" v-if="labels">
           <tv-label
-            v-for="{ id, color, name } in labels"
-            :key="id"
-            :color="color"
+            v-for="label in labels"
+            :key="label.id"
+            :color="label.color"
+            @click="clickLabel(label)"
           >
-            {{ name }}
+            {{ label.name }}
           </tv-label>
         </div>
         <div class="card-content_description">
@@ -23,7 +24,7 @@
       </div>
       <div class="card-action">
         <div class="card-action_button">
-          <tv-button @click="$emit('handleClick')" is-rounded is-small>
+          <tv-button @click="clickButton" is-rounded is-small>
             <slot name="textButton"></slot>
           </tv-button>
         </div>
@@ -56,8 +57,11 @@ export default {
     },
   },
   methods: {
-    handleClick() {
-      this.$emit("handleClick");
+    clickButton() {
+      this.$emit("clickButton");
+    },
+    clickLabel(label) {
+      this.$emit("clickLabel", label);
     },
   },
 };
