@@ -1,5 +1,5 @@
 <template>
-  <tv-demo invertTheme>
+  <tv-demo hideBackground>
     <h2 class="title">TODOvue card</h2>
     <div v-for="(demo, index) in demos" :key="`demo-${index}`" class="demo">
       <h2>{{ demo.title }}</h2>
@@ -128,6 +128,5 @@ export default {
 <style>
 .demo h2 {
   margin-top: 3rem !important;
-  color: white !important;
 }
 </style>
