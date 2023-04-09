@@ -1,16 +1,19 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <div class="card-image">
-        <img :src="image" :alt="title" />
+  <div class="tv-card-body">
+    <div class="tv-card">
+      <div class="tv-card-image">
+        <img :src="image" :alt="alt" />
       </div>
-      <div class="card-content">
-        <div class="card-content_title">
-          <slot name="title"></slot>
+      <div class="tv-card-content">
+        <div class="tv-card-title">
+          <slot v-if="!title" name="title"></slot>
+          <template v-else>
+            {{ title }}
+          </template>
         </div>
-        <div class="card-content_label" v-if="labels">
+        <div class="tv-card-label" v-if="labels">
           <tv-label
-            v-for="label in labels"
+            v-for="label in labels.slice(0, limitLabels)"
             :key="label.id"
             :color="label.color"
             @click="clickLabel(label)"
@@ -18,14 +21,20 @@
             {{ label.name }}
           </tv-label>
         </div>
-        <div class="card-content_description">
-          <slot name="description"></slot>
+        <div class="tv-card-description">
+          <slot v-if="!description" name="description"></slot>
+          <template v-else>
+            {{ description }}
+          </template>
         </div>
       </div>
-      <div class="card-action">
-        <div class="card-action_button">
-          <tv-button @click="clickButton" is-rounded is-small>
-            <slot name="textButton"></slot>
+      <div class="tv-card-action">
+        <div class="tv-card-button">
+          <tv-button @click="clickButton" isRounded>
+            <slot v-if="!textButton" name="textButton"></slot>
+            <template v-else>
+              {{ textButton }}
+            </template>
           </tv-button>
         </div>
       </div>
@@ -47,13 +56,33 @@ export default {
       type: String,
       required: true,
     },
-    title: {
+    alt: {
       type: String,
       required: true,
     },
     labels: {
       type: Array,
       required: false,
+    },
+    limitLabels: {
+      type: Number,
+      required: false,
+      default: 3,
+    },
+    description: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    title: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    textButton: {
+      type: String,
+      required: false,
+      default: null,
     },
   },
   methods: {
@@ -67,107 +96,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.dark-mode .card {
-  background: var(--color-background-card-dark);
-  color: var(--color-text-dark);
-}
-
-.dark-mode .card-content_title {
-  background: var(--color-background-card-dark);
-}
-
-.light-mode .card {
-  background: var(--color-background-card-light);
-  color: var(--color-text-light);
-}
-
-.light-mode .card-content_title {
-  background: var(--color-background-card-light);
-}
-
-.container {
-  max-width: 350px;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.container .card {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 30px;
-  border-radius: 0 0 20px 20px;
-  padding-top: 170px;
-  position: relative;
-}
-
-.container .card .card-image {
-  height: 200px;
-  overflow: hidden;
-  position: absolute;
-  top: -30px;
-}
-
-.container .card .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  padding: 0 10px;
-  border-radius: 20px 20px 0 0;
-}
-
-.container .card .card-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-  margin-top: 30px;
-}
-
-.container .card .card-content .card-content_title {
-  font-weight: 600;
-  text-transform: uppercase;
-  width: 80%;
-  text-align: center;
-  position: absolute;
-  top: -50px;
-  border-radius: 20px 20px 0 0;
-  padding: 10px 0;
-}
-
-.container .card .card-content .card-content_label {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  padding: 0 10px;
-  justify-content: center;
-}
-
-.container .card .card-content .card-content_description {
-  font-size: 12px;
-  text-align: center;
-  padding: 15px;
-  letter-spacing: 1px;
-  font-weight: 300;
-  margin-bottom: 20px;
-}
-
-.container .card .card-action {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  bottom: 20px;
-}
-
-.container .card .card-action .card-action_button {
-  position: absolute;
-}
-</style>
+<style></style>

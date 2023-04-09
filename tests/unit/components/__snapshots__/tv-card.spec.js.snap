@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TvButton Component should matches snapshot 1`] = `
+<div class="tv-card-body">
+  <div class="tv-card">
+    <div class="tv-card-image"><img src="https://via.placeholder.com/150" alt="Title"></div>
+    <div class="tv-card-content">
+      <div class="tv-card-title"></div>
+      <!--v-if-->
+      <div class="tv-card-description"></div>
+    </div>
+    <div class="tv-card-action">
+      <div class="tv-card-button">
+        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" text="" iconposition="right"></tv-button-stub>
+      </div>
+    </div>
+  </div>
+</div>
+`;
