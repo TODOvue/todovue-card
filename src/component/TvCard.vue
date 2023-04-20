@@ -62,37 +62,40 @@ export default {
     },
     labels: {
       type: Array,
-      required: false,
+      default: null,
     },
     limitLabels: {
       type: Number,
-      required: false,
       default: 3,
     },
     description: {
       type: String,
-      required: false,
       default: null,
     },
     title: {
       type: String,
-      required: false,
       default: null,
     },
     textButton: {
       type: String,
-      required: false,
       default: null,
     },
   },
-  methods: {
-    clickButton() {
-      this.$emit("clickButton");
-    },
-    clickLabel(label) {
-      this.$emit("clickLabel", label);
-    },
+  setup(_, { emit }) {
+    const clickButton = () => {
+      emit("clickButton");
+    };
+
+    const clickLabel = (label) => {
+      emit("clickLabel", label);
+    };
+
+    return {
+      clickButton,
+      clickLabel,
+    };
   },
+  emits: ["clickButton", "clickLabel"],
 };
 </script>
 

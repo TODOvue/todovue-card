@@ -11,7 +11,7 @@ exports[`TvButton Component should matches snapshot 1`] = `
     </div>
     <div class="tv-card-action">
       <div class="tv-card-button">
-        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" text="" iconposition="right"></tv-button-stub>
+        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" buttontext="" iconposition="right"></tv-button-stub>
       </div>
     </div>
   </div>

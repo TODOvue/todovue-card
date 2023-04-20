@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 const labels = [
   {
     id: 1,
@@ -255,5 +254,40 @@ export const demos = [
     Read more
   </template>
 </tv-card>`,
+  },
+  {
+    id: 4,
+    title: "TvCard using props",
+    propsData: {
+      title: "Create Vue.js",
+      description:
+        "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and other active members of the core team who come from various companies such as Netlify and Netguru.",
+      textButton: "Read more",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
+      alt: "Card Image",
+      labels: labels,
+    },
+    html: `
+<script>
+const card = {
+  image: "https://todovue.com/vue.webp",
+  alt: "Card Image",
+  labels: labels,
+  title: "Create Vue.js",
+  description: "Vue.js (commonly known as Vue; pronounced...",
+  textButton: "Read more"
+}
+</script>
+<tv-card
+  :image="card.image"
+  :alt="card.alt"
+  :labels="card.labels"
+  :title="card.title"
+  :description="card.description"
+  :textButton="card.textButton"
+  @clickButton="handleClickButton"
+  @clickLabel="handleClickLabel"
+/>`,
   },
 ];
