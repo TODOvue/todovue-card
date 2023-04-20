@@ -131,7 +131,7 @@
     var setPublicPath = null;
     ; // CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
     var external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = __webpack_require__(797);
-    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvButton.vue?vue&type=template&id=f811bba2
+    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvButton.vue?vue&type=template&id=35c5ee6a
 
     function render(_ctx, _cache, $props, $setup, $data, $options) {
       return (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("button", {
@@ -149,17 +149,17 @@
           'tv-btn-circle': $props.isCircle,
           'tv-btn-text': $props.isText
         }]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.handleClick && $options.handleClick(...args))
+        onClick: _cache[0] || (_cache[0] = (...args) => $setup.handleClick && $setup.handleClick(...args))
       }, [$props.icon ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("i", {
         key: 0,
         class: (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["tv-btn-icon", `tv-icon-${$props.icon} tv-icon-position-${$props.iconPosition}`])
-      }, null, 2)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), !$props.text ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
+      }, null, 2)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), !$props.buttonText ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
         key: 1
-      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.text ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
+      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.buttonText ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
         key: 2
-      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.text), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)], 2);
+      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.buttonText), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)], 2);
     }
-    ; // CONCATENATED MODULE: ./src/component/TvButton.vue?vue&type=template&id=f811bba2
+    ; // CONCATENATED MODULE: ./src/component/TvButton.vue?vue&type=template&id=35c5ee6a
 
     ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvButton.vue?vue&type=script&lang=js
     /* harmony default export */
@@ -218,7 +218,7 @@
           type: Boolean,
           default: false
         },
-        text: {
+        buttonText: {
           type: String,
           default: ""
         },
@@ -227,11 +227,17 @@
           default: "right"
         }
       },
-      methods: {
-        handleClick() {
-          this.$emit("click");
-        }
-      }
+      setup(_, {
+        emit
+      }) {
+        const handleClick = () => {
+          emit("click", {});
+        };
+        return {
+          handleClick
+        };
+      },
+      emits: ["click"]
     };
     ; // CONCATENATED MODULE: ./src/component/TvButton.vue?vue&type=script&lang=js
 
@@ -385,28 +391,29 @@
     var setPublicPath = null;
     ; // CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
     var external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = __webpack_require__(797);
-    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=template&id=499bd824
+    ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=template&id=302ed2f0
 
     function render(_ctx, _cache, $props, $setup, $data, $options) {
       return (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("div", {
         class: "tv-label",
         style: (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeStyle)({
-          backgroundColor: $options.colorWithOpacity,
+          backgroundColor: $setup.colorWithOpacity,
           border: `2px solid ${$props.color}`
         }),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.handleClick && $options.handleClick(...args))
-      }, [!$props.text ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
+        onClick: _cache[0] || (_cache[0] = (...args) => $setup.handleClick && $setup.handleClick(...args))
+      }, [!$props.textLabel ? (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.renderSlot)(_ctx.$slots, "default", {
         key: 0
-      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.text ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
+      }) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.textLabel ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.Fragment, {
         key: 1
-      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.text), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.isEdit || $props.isRemove ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("i", {
+      }, [(0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createTextVNode)((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.toDisplayString)($props.textLabel), 1)], 64)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true), $props.isEdit || $props.isRemove ? ((0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.openBlock)(), (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createElementBlock)("i", {
         key: 2,
         class: (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.normalizeClass)(["tv-label-icon", `tv-icon-position-${$props.iconPosition} tv-icon-${$props.isEdit ? 'edit' : 'remove'}`])
       }, null, 2)) : (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.createCommentVNode)("", true)], 4);
     }
-    ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=template&id=499bd824
+    ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=template&id=302ed2f0
 
     ; // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvLabel.vue?vue&type=script&lang=js
+
     /* harmony default export */
     var TvLabelvue_type_script_lang_js = {
       name: "TvLabel",
@@ -427,25 +434,30 @@
           type: String,
           default: "right"
         },
-        text: {
+        textLabel: {
           type: String,
           default: ""
         }
       },
-      computed: {
-        colorWithOpacity() {
-          if (!this.color) {
+      setup(props, {
+        emit
+      }) {
+        const colorWithOpacity = (0, external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
+          if (!props.color) {
             return "";
           }
-          const color = this.color.substring(1);
+          const color = props.color.substring(1);
           return `rgba(${parseInt(color.substring(0, 2), 16)}, ${parseInt(color.substring(2, 4), 16)}, ${parseInt(color.substring(4, 6), 16)}, 0.4)`;
-        }
+        });
+        const handleClick = () => {
+          emit("click", {});
+        };
+        return {
+          colorWithOpacity,
+          handleClick
+        };
       },
-      methods: {
-        handleClick() {
-          this.$emit("click");
-        }
-      }
+      emits: ["click"]
     };
     ; // CONCATENATED MODULE: ./src/component/TvLabel.vue?vue&type=script&lang=js
 
@@ -590,7 +602,7 @@ if (typeof window !== 'undefined') {
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(797);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvCard.vue?vue&type=template&id=9dc5eba0
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/component/TvCard.vue?vue&type=template&id=c4acaa26
 
 const _hoisted_1 = {
   class: "tv-card-body"
@@ -635,7 +647,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)(_component_tv_label, {
       key: label.id,
       color: label.color,
-      onClick: $event => $options.clickLabel(label)
+      onClick: $event => $setup.clickLabel(label)
     }, {
       default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)(label.name), 1)]),
       _: 2
@@ -645,7 +657,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
     key: 1
   }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createTextVNode)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.description), 1)], 64))])]), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_9, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementVNode)("div", _hoisted_10, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(_component_tv_button, {
-    onClick: $options.clickButton,
+    onClick: $setup.clickButton,
     isRounded: ""
   }, {
     default: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withCtx)(() => [!$props.textButton ? (0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderSlot)(_ctx.$slots, "textButton", {
@@ -656,7 +668,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onClick"])])])])]);
 }
-;// CONCATENATED MODULE: ./src/component/TvCard.vue?vue&type=template&id=9dc5eba0
+;// CONCATENATED MODULE: ./src/component/TvCard.vue?vue&type=template&id=c4acaa26
 
 // EXTERNAL MODULE: ./node_modules/todovue-button/dist/tvbutton.common.js
 var tvbutton_common = __webpack_require__(8);
@@ -684,37 +696,40 @@ var tvlabel_common_default = /*#__PURE__*/__webpack_require__.n(tvlabel_common);
     },
     labels: {
       type: Array,
-      required: false
+      default: null
     },
     limitLabels: {
       type: Number,
-      required: false,
       default: 3
     },
     description: {
       type: String,
-      required: false,
       default: null
     },
     title: {
       type: String,
-      required: false,
       default: null
     },
     textButton: {
       type: String,
-      required: false,
       default: null
     }
   },
-  methods: {
-    clickButton() {
-      this.$emit("clickButton");
-    },
-    clickLabel(label) {
-      this.$emit("clickLabel", label);
-    }
-  }
+  setup(_, {
+    emit
+  }) {
+    const clickButton = () => {
+      emit("clickButton");
+    };
+    const clickLabel = label => {
+      emit("clickLabel", label);
+    };
+    return {
+      clickButton,
+      clickLabel
+    };
+  },
+  emits: ["clickButton", "clickLabel"]
 });
 ;// CONCATENATED MODULE: ./src/component/TvCard.vue?vue&type=script&lang=js
  
