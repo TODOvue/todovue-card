@@ -1,5 +1,16 @@
 # Changelog **TODOvue Card**
 
+## v2.3.0
+### Dependencies Update
+* The `todovue-css` component is removed
+* Update `todovue-demo` to version 3.0.2 as development dependency
+* Update `todovue-label` to version 2.3.0
+* Update `todovue-button` to version 2.3.0
+### Features
+* The sass module is added to the project
+* Customization is added to the component
+* Second button is added to the component (optional)
+
 ## v2.2.0
 ### Dependencies Update
 * Update `todovue-button` to version 2.2.0
