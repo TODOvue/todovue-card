@@ -51,7 +51,7 @@
 <script>
 import TvButton from "todovue-button";
 import TvLabel from "todovue-label";
-import { computed } from "vue";
+import useCard from "@/composable/useCard";
 export default {
   name: "TvCard",
   components: {
@@ -64,44 +64,8 @@ export default {
       default: () => {},
     },
   },
-  setup(props, { emit }) {
-    const clickButton = () => {
-      emit("clickButton");
-    };
-
-    const clickLabel = (label) => {
-      emit("clickLabel", label);
-    };
-
-    const card = computed(() => {
-      const { configCard } = props;
-      if (!configCard) return null;
-      return {
-        image: configCard.image,
-        alt: configCard.alt,
-        description: configCard.description,
-        title: configCard.title,
-        primaryButtonText: configCard.primaryButtonText,
-        secondaryButtonText: configCard.secondaryButtonText || null,
-        labels: configCard.labels || null,
-        limitLabels: configCard.limitLabels || 3,
-        customStyleCard:
-          {
-            backgroundColor: configCard.backgroundColor || null,
-            color: configCard.color || null,
-          } || null,
-        customStyleButton:
-          {
-            backgroundColor: configCard.backgroundButtonColor || null,
-            color: configCard.colorButton || null,
-          } || null,
-        customStyleButtonSecondary:
-          {
-            backgroundColor: configCard.backgroundButtonSecondaryColor || null,
-            color: configCard.colorButtonSecondary || null,
-          } || null,
-      };
-    });
+  setup(props) {
+    const { clickButton, clickLabel, card } = useCard(props);
 
     return {
       clickButton,
