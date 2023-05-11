@@ -10,6 +10,7 @@
 * The sass module is added to the project
 * Customization is added to the component
 * Second button is added to the component (optional)
+* Composable useCard is added to the component
 
 ## v2.2.0
 ### Dependencies Update
