@@ -1,19 +1,16 @@
 <template>
-  <div class="tv-card-body">
-    <div class="tv-card">
+  <div class="tv-card-body" v-if="card">
+    <div class="tv-card" :style="card.customStyleCard">
       <div class="tv-card-image">
-        <img :src="image" :alt="alt" />
+        <img :src="card.image" :alt="card.alt" />
       </div>
       <div class="tv-card-content">
-        <div class="tv-card-title">
-          <slot v-if="!title" name="title"></slot>
-          <template v-else>
-            {{ title }}
-          </template>
+        <div class="tv-card-title" :style="card.customStyleCard">
+          {{ card.title }}
         </div>
-        <div class="tv-card-label" v-if="labels">
+        <div class="tv-card-label" v-if="card.labels">
           <tv-label
-            v-for="label in labels.slice(0, limitLabels)"
+            v-for="label in card.labels.slice(0, card.limitLabels)"
             :key="label.id"
             :color="label.color"
             @click="clickLabel(label)"
@@ -21,20 +18,29 @@
             {{ label.name }}
           </tv-label>
         </div>
-        <div class="tv-card-description">
-          <slot v-if="!description" name="description"></slot>
-          <template v-else>
-            {{ description }}
-          </template>
+        <div class="tv-card-description" :class="{ 'tv-pt-0': !card.labels }">
+          {{ card.description }}
         </div>
       </div>
       <div class="tv-card-action">
         <div class="tv-card-button">
-          <tv-button @click="clickButton" isRounded>
-            <slot v-if="!textButton" name="textButton"></slot>
-            <template v-else>
-              {{ textButton }}
-            </template>
+          <tv-button
+            @cliclButton="clickButton"
+            isRounded
+            :class="{ 'tv-btn-small': card.secondaryButtonText }"
+            :customStyle="card.customStyleButton"
+          >
+            {{ card.primaryButtonText }}
+          </tv-button>
+          <tv-button
+            @cliclButton="clickButton"
+            isRounded
+            v-if="card.secondaryButtonText"
+            isInfo
+            isSmall
+            :customStyle="card.customStyleButtonSecondary"
+          >
+            {{ card.secondaryButtonText }}
           </tv-button>
         </div>
       </div>
@@ -45,6 +51,7 @@
 <script>
 import TvButton from "todovue-button";
 import TvLabel from "todovue-label";
+import { computed } from "vue";
 export default {
   name: "TvCard",
   components: {
@@ -52,36 +59,12 @@ export default {
     TvLabel,
   },
   props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    alt: {
-      type: String,
-      required: true,
-    },
-    labels: {
-      type: Array,
-      default: null,
-    },
-    limitLabels: {
-      type: Number,
-      default: 3,
-    },
-    description: {
-      type: String,
-      default: null,
-    },
-    title: {
-      type: String,
-      default: null,
-    },
-    textButton: {
-      type: String,
-      default: null,
+    configCard: {
+      type: Object,
+      default: () => {},
     },
   },
-  setup(_, { emit }) {
+  setup(props, { emit }) {
     const clickButton = () => {
       emit("clickButton");
     };
@@ -90,13 +73,44 @@ export default {
       emit("clickLabel", label);
     };
 
+    const card = computed(() => {
+      const { configCard } = props;
+      if (!configCard) return null;
+      return {
+        image: configCard.image,
+        alt: configCard.alt,
+        description: configCard.description,
+        title: configCard.title,
+        primaryButtonText: configCard.primaryButtonText,
+        secondaryButtonText: configCard.secondaryButtonText || null,
+        labels: configCard.labels || null,
+        limitLabels: configCard.limitLabels || 3,
+        customStyleCard:
+          {
+            backgroundColor: configCard.backgroundColor || null,
+            color: configCard.color || null,
+          } || null,
+        customStyleButton:
+          {
+            backgroundColor: configCard.backgroundButtonColor || null,
+            color: configCard.colorButton || null,
+          } || null,
+        customStyleButtonSecondary:
+          {
+            backgroundColor: configCard.backgroundButtonSecondaryColor || null,
+            color: configCard.colorButtonSecondary || null,
+          } || null,
+      };
+    });
+
     return {
       clickButton,
       clickLabel,
+      card,
     };
   },
   emits: ["clickButton", "clickLabel"],
 };
 </script>
 
-<style></style>
+<style scoped lang="scss" src="../assets/scss/style.scss"></style>

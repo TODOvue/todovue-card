@@ -154,140 +154,293 @@ const labels = [
 export const demos = [
   {
     id: 1,
-    title: "TvCard default (Default labels is 3)",
+    title: "TvCard default",
     propsData: {
-      title: "Create Vue.js",
-      description:
-        "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and other active members of the core team who come from various companies such as Netlify and Netguru.",
-      textButton: "Read more",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
-      alt: "Card Image",
-      labels: labels,
+      configCard: {
+        title: "Create Vue.js",
+        description:
+          "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications.",
+        alt: "Card Image",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
+        primaryButtonText: "View more",
+      },
     },
-    html: `<!-- By default, it shows 3 labels -->
-<tv-card
-  image="https://todovue.com/vue.webp"
-  alt="Card Image"
-  :labels="labels"
-  @clickButton="handleClickButton"
-  @clickLabel="handleClickLabel"
->
-  <template #title>
-    Create Vue.js
-  </template>
-  <template #description>
-    Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework
-    for building user interfaces and single-page applications. It was created by Evan You
-    and is maintained by him and other active members of the core team who come from
-    various companies such as Netlify and Netguru.
-  </template>
-  <template #textButton>
-    Read more
-  </template>
-</tv-card>`,
+    html: `<template>
+  <tv-card :configCard="configCard" />
+</template>
+
+<script>
+import { ref } from "vue";
+import TvCard from "todovue-card";
+
+export default {
+  name: "Demo",
+  components: {
+    TvCard,
+  },
+  setup() {
+    const configCard = ref({
+      title: "Create Vue.js",
+      description: "Vue.js (commonly known as Vue; pronounced /vjuː/...",
+      alt: "Card Image",
+      image: "https://todovue.com/vue.webp",
+      primaryButtonText: "View more",
+    });
+    
+    return {
+      configCard,
+    }
+  }
+};
+</script>`,
   },
   {
     id: 2,
-    title: "TvCard without labels",
+    title: "TvCard with labels",
     propsData: {
-      title: "Create Vue.js",
-      description:
-        "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and other active members of the core team who come from various companies such as Netlify and Netguru.",
-      textButton: "Read more",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
-      alt: "Card Image",
+      configCard: {
+        title: "Write JavaScript",
+        description:
+          "JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification.",
+        primaryButtonText: "See more",
+        alt: "Card Image",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/cards%2Fcode-g310d81d24_640.webp?alt=media&token=c25e7d00-9386-4823-bf56-f0d1081069d1",
+        labels: labels,
+      },
     },
-    html: `<tv-card
-  image="https://todovue.com/vue.webp"
-  alt="Card Image"
-  @clickButton="handleClickButton"
-  @clickLabel="handleClickLabel"
->
-  <template #title>
-    Create Vue.js
-  </template>
-  <template #description>
-    Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework
-    for building user interfaces and single-page applications. It was created by Evan You
-    and is maintained by him and other active members of the core team who come from
-    various companies such as Netlify and Netguru.
-  </template>
-  <template #textButton>
-    Read more
-  </template>
-</tv-card>`,
+    html: `<template>
+  <tv-card :configCard="configCard" />
+</template>
+
+<script>
+import { ref } from "vue";
+import TvCard from "todovue-card";
+
+export default {
+  name: "Demo",
+  components: {
+    TvCard,
+  },
+  setup() {
+    const configCard = ref({
+      title: "Write JavaScript",
+      description: "JavaScript, often abbreviated as JS...",
+      primaryButtonText: "See more",
+      alt: "Card Image",
+      image: "https://todovue.com/code.webp",
+      labels: [
+        {
+          id: 1,
+          name: "JavaScript",
+          color: "#F7DF1E",
+        },
+        {
+          id: 2,
+          name: "HTML",
+          color: "#E34F26",
+        },
+        {
+          id: 3,
+          name: "CSS",
+          color: "#1572B6",
+          
+        }
+      ],
+    });
+    
+    return {
+      configCard,
+    }
+  }
+}`,
   },
   {
     id: 3,
-    title: "TvCard with more labels",
+    title: "TvCard with two buttons",
     propsData: {
-      title: "Create Vue.js",
-      description:
-        "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and other active members of the core team who come from various companies such as Netlify and Netguru.",
-      textButton: "Read more",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
-      alt: "Card Image",
-      labels: labels,
-      limitLabels: 10,
+      configCard: {
+        title: "Design Web",
+        description:
+          "Web design encompasses many different skills and disciplines in the production and maintenance of websites.",
+        primaryButtonText: "View code",
+        secondaryButtonText: "View blog",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/cards%2Fweb-design-3411373_1280.webp?alt=media&token=249aaa7a-42e7-4fc1-98fc-edee650c01cd",
+        alt: "Card Image",
+        labels: labels,
+      },
     },
-    html: `<tv-card
-  image="https://todovue.com/vue.webp"
-  alt="Card Image"
-  :labels="labels"
-  :limitLabels="10"
-  @clickButton="handleClickButton"
-  @clickLabel="handleClickLabel"
->
-  <template #title>
-    Create Vue.js
-  </template>
-  <template #description>
-    Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework
-    for building user interfaces and single-page applications. It was created by Evan You
-    and is maintained by him and other active members of the core team who come from
-    various companies such as Netlify and Netguru.
-  </template>
-  <template #textButton>
-    Read more
-  </template>
-</tv-card>`,
+    html: `<template>
+  <tv-card :configCard="configCard" />
+</template>
+
+<script>
+import { ref } from "vue";
+import TvCard from "todovue-card";
+
+export default {
+  name: "Demo",
+  components: {
+    TvCard,
+  },
+  setup() {
+    const configCard = ref({
+      title: "Design Web",
+      description: "Web design encompasses many different skills...",
+      primaryButtonText: "View code",
+      secondaryButtonText: "View blog",
+      image: "https://todovue.com/web-design.webp",
+      labels: [
+        {
+          id: 1,
+          name: "JavaScript",
+          color: "#F7DF1E",
+        },
+        {
+          id: 2,
+          name: "HTML",
+          color: "#E34F26",
+        },
+        {
+          id: 3,
+          name: "CSS",
+          color: "#1572B6",
+        }
+      ],
+    });
+    
+    return {
+      configCard,
+    }
+  }
+</script>`,
   },
   {
     id: 4,
-    title: "TvCard using props",
+    title: "TvCard with custom colors",
     propsData: {
-      title: "Create Vue.js",
-      description:
-        "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and other active members of the core team who come from various companies such as Netlify and Netguru.",
-      textButton: "Read more",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
-      alt: "Card Image",
-      labels: labels,
+      configCard: {
+        title: "Write Vue.js",
+        description:
+          "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications.",
+        primaryButtonText: "View code",
+        secondaryButtonText: "View blog",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/cards%2Ftyping-gf76f9bdc5_640.webp?alt=media&token=bbf414f6-9a98-484e-a020-901bf20efd15",
+        alt: "Card Image",
+        labels: labels,
+        backgroundColor: "#46627f",
+        color: "#ffffff",
+        backgroundButtonColor: "#062131",
+        colorButton: "#ffffff",
+        backgroundButtonSecondaryColor: "#0eb096",
+        colorButtonSecondary: "#000000",
+      },
     },
-    html: `
+    html: `<template>
+  <tv-card :configCard="configCard" />
+</template>
+
 <script>
-const card = {
-  image: "https://todovue.com/vue.webp",
-  alt: "Card Image",
-  labels: labels,
-  title: "Create Vue.js",
-  description: "Vue.js (commonly known as Vue; pronounced...",
-  textButton: "Read more"
+import { ref } from "vue";
+import TvCard from "todovue-card";
+
+export default {
+  name: "Demo",
+  components: {
+    TvCard,
+  },
+  setup() {
+    const configCard = ref({
+      title: "Write Vue.js",
+      description: "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view')...",
+      primaryButtonText: "View code",
+      secondaryButtonText: "View blog",
+      image: "https://todovue.com/vuejs.webp",
+      labels: [
+        {
+          id: 1,
+          name: "JavaScript",
+          color: "#F7DF1E",
+        },
+        {
+          id: 2,
+          name: "HTML",
+          color: "#E34F26",
+        },
+        {
+          id: 3,
+          name: "CSS",
+          color: "#1572B6",
+        },
+      ],
+      backgroundColor: "#46627f",
+      color: "#ffffff",
+      backgroundButtonColor: "#062131",
+      colorButton: "#ffffff",
+      backgroundButtonSecondaryColor: "#0eb096",
+      colorButtonSecondary: "#000000",
+    });
+    
+    return {
+      configCard,
+    }
+  }
+</script>`,
+  },
+  {
+    id: 5,
+    title: "TvCard with multiple labels (default 3) with limitLabels",
+    propsData: {
+      configCard: {
+        title: "Write JavaScript",
+        description:
+          "JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification.",
+        primaryButtonText: "See more",
+        alt: "Card Image",
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/cards%2Fcode-g310d81d24_640.webp?alt=media&token=c25e7d00-9386-4823-bf56-f0d1081069d1",
+        labels: labels,
+        limitLabels: 10,
+      },
+    },
+    html: `<template>
+  <tv-card :configCard="configCard" />
+</template>
+
+<script>
+import { ref } from "vue";
+import TvCard from "todovue-card";
+
+export default {
+  name: "Demo",
+  components: {
+    TvCard,
+  },
+  setup() {
+    const configCard = ref({
+      title: "Write JavaScript",
+      description: "JavaScript, often abbreviated as JS...",
+      primaryButtonText: "See more",
+      image: "https://todovue.com/javascript.webp",
+      labels: [
+        {
+          id: 1,
+          name: "JavaScript",
+          color: "#F7DF1E",
+        },
+        ...
+      ],
+      limitLabels: 10,
+    });
+    
+    return {
+      configCard,
+    }
+  }
 }
-</script>
-<tv-card
-  :image="card.image"
-  :alt="card.alt"
-  :labels="card.labels"
-  :title="card.title"
-  :description="card.description"
-  :textButton="card.textButton"
-  @clickButton="handleClickButton"
-  @clickLabel="handleClickLabel"
-/>`,
+</script>`,
   },
 ];
