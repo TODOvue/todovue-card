@@ -1,40 +1,46 @@
 <template>
-  <div class="tv-card-body">
-    <div class="tv-card">
+  <div class="tv-card-body" v-if="card">
+    <div class="tv-card" :style="card.customStyleCard">
       <div class="tv-card-image">
-        <img :src="image" :alt="alt" />
+        <img :src="card.image" :alt="card.alt" />
       </div>
       <div class="tv-card-content">
-        <div class="tv-card-title">
-          <slot v-if="!title" name="title"></slot>
-          <template v-else>
-            {{ title }}
-          </template>
+        <div class="tv-card-title" :style="card.customStyleCard">
+          {{ card.title }}
         </div>
-        <div class="tv-card-label" v-if="labels">
+        <div class="tv-card-label" v-if="card.labels">
           <tv-label
-            v-for="label in labels.slice(0, limitLabels)"
+            v-for="label in card.labels.slice(0, card.limitLabels)"
             :key="label.id"
             :color="label.color"
-            @click="clickLabel(label)"
+            @click="handleClickLabel(label)"
           >
             {{ label.name }}
           </tv-label>
         </div>
-        <div class="tv-card-description">
-          <slot v-if="!description" name="description"></slot>
-          <template v-else>
-            {{ description }}
-          </template>
+        <div class="tv-card-description" :class="{ 'tv-pt-0': !card.labels }">
+          {{ card.description }}
         </div>
       </div>
       <div class="tv-card-action">
         <div class="tv-card-button">
-          <tv-button @click="clickButton" isRounded>
-            <slot v-if="!textButton" name="textButton"></slot>
-            <template v-else>
-              {{ textButton }}
-            </template>
+          <tv-button
+            @cliclButton="handleClick"
+            isRounded
+            :class="{ 'tv-btn-small': card.secondaryButtonText }"
+            :customStyle="card.customStyleButton"
+          >
+            {{ card.primaryButtonText }}
+          </tv-button>
+          <tv-button
+            @cliclButton="handleSecondaryClick"
+            isRounded
+            v-if="card.secondaryButtonText"
+            isInfo
+            isSmall
+            :customStyle="card.customStyleButtonSecondary"
+          >
+            {{ card.secondaryButtonText }}
           </tv-button>
         </div>
       </div>
@@ -45,6 +51,7 @@
 <script>
 import TvButton from "todovue-button";
 import TvLabel from "todovue-label";
+import useCard from "@/composable/useCard";
 export default {
   name: "TvCard",
   components: {
@@ -52,51 +59,24 @@ export default {
     TvLabel,
   },
   props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    alt: {
-      type: String,
-      required: true,
-    },
-    labels: {
-      type: Array,
-      default: null,
-    },
-    limitLabels: {
-      type: Number,
-      default: 3,
-    },
-    description: {
-      type: String,
-      default: null,
-    },
-    title: {
-      type: String,
-      default: null,
-    },
-    textButton: {
-      type: String,
-      default: null,
+    configCard: {
+      type: Object,
+      default: () => {},
     },
   },
-  setup(_, { emit }) {
-    const clickButton = () => {
-      emit("clickButton");
-    };
-
-    const clickLabel = (label) => {
-      emit("clickLabel", label);
-    };
+  setup(props) {
+    const { handleClickLabel, handleClick, handleSecondaryClick, card } =
+      useCard(props);
 
     return {
-      clickButton,
-      clickLabel,
+      handleClick,
+      handleClickLabel,
+      handleSecondaryClick,
+      card,
     };
   },
-  emits: ["clickButton", "clickLabel"],
+  emits: ["clickButton", "clickLabel", "clickSecondaryButton"],
 };
 </script>
 
-<style></style>
+<style scoped lang="scss" src="../assets/scss/style.scss"></style>

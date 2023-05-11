@@ -3,15 +3,37 @@
 exports[`TvButton Component should matches snapshot 1`] = `
 <div class="tv-card-body">
   <div class="tv-card">
-    <div class="tv-card-image"><img src="https://via.placeholder.com/150" alt="Title"></div>
+    <div class="tv-card-image"><img src="https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&amp;token=7b717129-29c3-4f36-846d-c0243b28e216" alt="Card Image"></div>
     <div class="tv-card-content">
-      <div class="tv-card-title"></div>
+      <div class="tv-card-title">Create Vue.js</div>
       <!--v-if-->
-      <div class="tv-card-description"></div>
+      <div class="tv-card-description tv-pt-0">Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications.</div>
     </div>
     <div class="tv-card-action">
       <div class="tv-card-button">
-        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" buttontext="" iconposition="right"></tv-button-stub>
+        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" buttontext="" iconposition="right" type="button" class=""></tv-button-stub>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TvButton Component should not render card when configCard is null 1`] = `<!--v-if-->`;
+
+exports[`TvButton Component should render custom style 1`] = `
+<div class="tv-card-body">
+  <div class="tv-card" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);">
+    <div class="tv-card-image"><img src="https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&amp;token=7b717129-29c3-4f36-846d-c0243b28e216" alt="Card Image"></div>
+    <div class="tv-card-content">
+      <div class="tv-card-title" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);">Create Vue.js</div>
+      <!--v-if-->
+      <div class="tv-card-description tv-pt-0">Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications.</div>
+    </div>
+    <div class="tv-card-action">
+      <div class="tv-card-button">
+        <tv-button-stub isrounded="true" isfull="false" isoutlined="false" issmall="false" islarge="false" issuccess="false" icon="" isinfo="false" iswarning="false" iserror="false" isdisabled="false" iscircle="false" istext="false" buttontext="" iconposition="right" customstyle="[object Object]" type="button" class=""></tv-button-stub>
+        <!--v-if-->
       </div>
     </div>
   </div>
