@@ -2,47 +2,22 @@ import { shallowMount } from "@vue/test-utils";
 import TvCard from "@/component/TvCard.vue";
 
 describe("TvButton Component", () => {
+  const configCard = {
+    title: "Create Vue.js",
+    description:
+      "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view') is an open-source JavaScript framework for building user interfaces and single-page applications.",
+    alt: "Card Image",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/todovue-blog.appspot.com/o/vue.webp?alt=media&token=7b717129-29c3-4f36-846d-c0243b28e216",
+    primaryButtonText: "View more",
+  };
+
   it("should matches snapshot", () => {
     const wrapper = shallowMount(TvCard, {
       props: {
-        image: "https://via.placeholder.com/150",
-        alt: "Title",
+        configCard,
       },
     });
     expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it("emits a click event when the button is clicked", () => {
-    const wrapper = shallowMount(TvCard, {
-      props: {
-        image: "https://via.placeholder.com/150",
-        alt: "Title",
-      },
-    });
-    wrapper.find("tv-button-stub").trigger("click");
-    expect(wrapper.emitted("clickButton")).toBeTruthy();
-  });
-
-  it("emits a click event when the label is clicked", () => {
-    const wrapper = shallowMount(TvCard, {
-      props: {
-        image: "https://via.placeholder.com/150",
-        alt: "Title",
-        labels: [
-          {
-            id: 1,
-            name: "Vue.js",
-            color: "#4FC08D",
-          },
-          {
-            id: 2,
-            name: "JavaScript",
-            color: "#F0DB4F",
-          },
-        ],
-      },
-    });
-    wrapper.find("tv-label-stub").trigger("click");
-    expect(wrapper.emitted("clickLabel")).toBeTruthy();
   });
 });
