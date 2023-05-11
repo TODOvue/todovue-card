@@ -13,7 +13,7 @@
             v-for="label in card.labels.slice(0, card.limitLabels)"
             :key="label.id"
             :color="label.color"
-            @click="clickLabel(label)"
+            @click="handleClickLabel(label)"
           >
             {{ label.name }}
           </tv-label>
@@ -25,7 +25,7 @@
       <div class="tv-card-action">
         <div class="tv-card-button">
           <tv-button
-            @cliclButton="clickButton"
+            @cliclButton="handleClick"
             isRounded
             :class="{ 'tv-btn-small': card.secondaryButtonText }"
             :customStyle="card.customStyleButton"
@@ -33,7 +33,7 @@
             {{ card.primaryButtonText }}
           </tv-button>
           <tv-button
-            @cliclButton="clickButton"
+            @cliclButton="handleSecondaryClick"
             isRounded
             v-if="card.secondaryButtonText"
             isInfo
@@ -65,15 +65,17 @@ export default {
     },
   },
   setup(props) {
-    const { clickButton, clickLabel, card } = useCard(props);
+    const { handleClickLabel, handleClick, handleSecondaryClick, card } =
+      useCard(props);
 
     return {
-      clickButton,
-      clickLabel,
+      handleClick,
+      handleClickLabel,
+      handleSecondaryClick,
       card,
     };
   },
-  emits: ["clickButton", "clickLabel"],
+  emits: ["clickButton", "clickLabel", "clickSecondaryButton"],
 };
 </script>
 

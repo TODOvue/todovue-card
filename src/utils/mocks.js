@@ -167,7 +167,10 @@ export const demos = [
       },
     },
     html: `<template>
-  <tv-card :configCard="configCard" />
+  <tv-card
+    @click-button="handleButton"
+    :configCard="configCard"
+  />
 </template>
 
 <script>
@@ -188,8 +191,13 @@ export default {
       primaryButtonText: "View more",
     });
     
+    const handleButton = () => {
+      console.log("Button clicked");
+    }
+    
     return {
       configCard,
+      handleButton
     }
   }
 };
@@ -211,7 +219,11 @@ export default {
       },
     },
     html: `<template>
-  <tv-card :configCard="configCard" />
+  <tv-card
+    @click-label="handleLabel"
+    @click-button="handleButton"
+    :configCard="configCard"
+  />
 </template>
 
 <script>
@@ -250,8 +262,18 @@ export default {
       ],
     });
     
+    const handleLabel = (label) => {
+      console.log(label);
+    }
+    
+    const handleButton = () => {
+      console.log("Button clicked");
+    }
+    
     return {
       configCard,
+      handleButton,
+      handleLabel
     }
   }
 }`,
@@ -273,7 +295,12 @@ export default {
       },
     },
     html: `<template>
-  <tv-card :configCard="configCard" />
+  <tv-card
+    @click-label="handleLabel"
+    @click-button="handleButton"
+    @click-secondary-button="handleSecondaryButton"
+    :configCard="configCard"
+  />
 </template>
 
 <script>
@@ -310,9 +337,24 @@ export default {
         }
       ],
     });
+
+    const handleLabel = (label) => {
+      console.log(label);
+    }
+    
+    const handleButton = () => {
+      console.log("Button clicked");
+    }
+    
+    const handleSecondaryButton = () => {
+      console.log("Secondary button clicked");
+    }
     
     return {
       configCard,
+      handleButton,
+      handleLabel,
+      handleSecondaryButton
     }
   }
 </script>`,
@@ -340,7 +382,12 @@ export default {
       },
     },
     html: `<template>
-  <tv-card :configCard="configCard" />
+  <tv-card
+    @click-label="handleLabel"
+    @click-button="handleButton"
+    @click-secondary-button="handleSecondaryButton"
+    :configCard="configCard"
+  />
 </template>
 
 <script>
@@ -384,8 +431,23 @@ export default {
       colorButtonSecondary: "#000000",
     });
     
+    const handleLabel = (label) => {
+      console.log(label);
+    }
+    
+    const handleButton = () => {
+      console.log("Button clicked");
+    }
+    
+    const handleSecondaryButton = () => {
+      console.log("Secondary button clicked");
+    }
+    
     return {
       configCard,
+      handleButton,
+      handleLabel,
+      handleSecondaryButton
     }
   }
 </script>`,
@@ -407,7 +469,11 @@ export default {
       },
     },
     html: `<template>
-  <tv-card :configCard="configCard" />
+  <tv-card
+    @click-label="handleLabel"
+    @click-button="handleButton"
+    :configCard="configCard"
+  />
 </template>
 
 <script>
@@ -436,8 +502,18 @@ export default {
       limitLabels: 10,
     });
     
+    const handleLabel = (label) => {
+      console.log(label);
+    }
+    
+    const handleButton = () => {
+      console.log("Button clicked");
+    }
+        
     return {
       configCard,
+      handleButton,
+      handleLabel
     }
   }
 }

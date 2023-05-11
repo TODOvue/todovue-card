@@ -2,11 +2,15 @@ import { computed, getCurrentInstance } from "vue";
 
 const useCard = (props) => {
   const _instance = getCurrentInstance();
-  const clickButton = () => {
+  const handleClick = () => {
     _instance.emit("clickButton");
   };
 
-  const clickLabel = (label) => {
+  const handleSecondaryClick = () => {
+    _instance.emit("clickSecondaryButton");
+  };
+
+  const handleClickLabel = (label) => {
     _instance.emit("clickLabel", label);
   };
 
@@ -59,8 +63,9 @@ const useCard = (props) => {
   });
 
   return {
-    clickButton,
-    clickLabel,
+    handleClick,
+    handleClickLabel,
+    handleSecondaryClick,
     card,
   };
 };
