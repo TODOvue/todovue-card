@@ -20,4 +20,66 @@ describe("TvButton Component", () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it("should not render card when configCard is null", () => {
+    const wrapper = shallowMount(TvCard, {
+      props: {
+        configCard: null,
+      },
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it("should emmit event when primary button is clicked", async () => {
+    const wrapper = shallowMount(TvCard, {
+      props: {
+        configCard,
+      },
+    });
+    wrapper.vm.handleClick();
+    expect(wrapper.emitted("clickButton")).toBeTruthy();
+  });
+
+  it("should emmit event when secondary button is clicked", async () => {
+    const wrapper = shallowMount(TvCard, {
+      props: {
+        configCard: {
+          ...configCard,
+          secondaryButtonText: "View more",
+        },
+      },
+    });
+    wrapper.vm.handleSecondaryClick();
+    expect(wrapper.emitted("clickSecondaryButton")).toBeTruthy();
+  });
+
+  it("should emmit event when label is clicked", async () => {
+    const wrapper = shallowMount(TvCard, {
+      props: {
+        configCard: {
+          ...configCard,
+          labels: ["Vue.js", "JavaScript"],
+        },
+      },
+    });
+    wrapper.vm.handleClickLabel("Vue.js");
+    expect(wrapper.emitted("clickLabel")).toBeTruthy();
+  });
+
+  it("should render custom style", () => {
+    const wrapper = shallowMount(TvCard, {
+      props: {
+        configCard: {
+          ...configCard,
+          backgroundColor: "#000",
+          color: "#fff",
+          backgroundButtonColor: "#fff",
+          colorButton: "#000",
+          backgroundButtonSecondaryColor: "#fff",
+          colorButtonSecondary: "#000",
+        },
+      },
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });
