@@ -1,0 +1,61 @@
+{
+  "name": "@todovue/tvcard",
+  "private": false,
+  "author": "Cristhian Daza",
+  "description": "Component Card created for the TodoVue blog",
+  "license": "MIT",
+  "version": "0.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TODOvue/todovue-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TODOvue/todovue-card/issues"
+  },
+  "keywords": [
+    "todovue",
+    "front-end",
+    "web",
+    "vue",
+    "vuejs",
+    "vue-js",
+    "card",
+    "show-card",
+    "vue-card",
+    "vue-card-component"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/todovue-card.es.js",
+      "require": "./dist/todovue-card.cjs.js"
+    }
+  },
+  "main": "dist/todovue-card.cjs.js",
+  "module": "dist/todovue-card.es.js",
+  "types": "dist/todovue-card.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:demo": "VITE_BUILD_TARGET=demo vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.85.0",
+    "vite": "^5.2.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-dts": "^4.5.0"
+  }
+}
