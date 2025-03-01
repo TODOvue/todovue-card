@@ -1,3 +1,9 @@
+import Default from './demos/default.vue?raw';
+import WithLabels from './demos/withLabels.vue?raw';
+import WithTwoButtons from './demos/withTwoButtons.vue?raw';
+import WithCustomColors from './demos/withCustomColors.vue?raw';
+import WithMultipleLabels from './demos/withMultipleLabels.vue?raw';
+
 const labels = [
   {
     id: 1,
@@ -154,7 +160,7 @@ const labels = [
 export const demos = [
   {
     id: 1,
-    title: "TvCard default",
+    title: "Default",
     propsData: {
       configCard: {
         title: "Create Vue.js",
@@ -166,46 +172,11 @@ export const demos = [
         primaryButtonText: "View more",
       },
     },
-    html: `<template>
-  <tv-card
-    @click-button="handleButton"
-    :configCard="configCard"
-  />
-</template>
-
-<script>
-import { ref } from "vue";
-import TvCard from "todovue-card";
-
-export default {
-  name: "Demo",
-  components: {
-    TvCard,
-  },
-  setup() {
-    const configCard = ref({
-      title: "Create Vue.js",
-      description: "Vue.js (commonly known as Vue; pronounced /vjuː/...",
-      alt: "Card Image",
-      image: "https://todovue.com/vue.webp",
-      primaryButtonText: "View more",
-    });
-    
-    const handleButton = () => {
-      console.log("Button clicked");
-    }
-    
-    return {
-      configCard,
-      handleButton
-    }
-  }
-};
-</script>`,
+    html: Default,
   },
   {
     id: 2,
-    title: "TvCard with labels",
+    title: "With labels",
     propsData: {
       configCard: {
         title: "Write JavaScript",
@@ -218,69 +189,11 @@ export default {
         labels: labels,
       },
     },
-    html: `<template>
-  <tv-card
-    @click-label="handleLabel"
-    @click-button="handleButton"
-    :configCard="configCard"
-  />
-</template>
-
-<script>
-import { ref } from "vue";
-import TvCard from "todovue-card";
-
-export default {
-  name: "Demo",
-  components: {
-    TvCard,
-  },
-  setup() {
-    const configCard = ref({
-      title: "Write JavaScript",
-      description: "JavaScript, often abbreviated as JS...",
-      primaryButtonText: "See more",
-      alt: "Card Image",
-      image: "https://todovue.com/code.webp",
-      labels: [
-        {
-          id: 1,
-          name: "JavaScript",
-          color: "#F7DF1E",
-        },
-        {
-          id: 2,
-          name: "HTML",
-          color: "#E34F26",
-        },
-        {
-          id: 3,
-          name: "CSS",
-          color: "#1572B6",
-          
-        }
-      ],
-    });
-    
-    const handleLabel = (label) => {
-      console.log(label);
-    }
-    
-    const handleButton = () => {
-      console.log("Button clicked");
-    }
-    
-    return {
-      configCard,
-      handleButton,
-      handleLabel
-    }
-  }
-}`,
+    html: WithLabels,
   },
   {
     id: 3,
-    title: "TvCard with two buttons",
+    title: "With two buttons",
     propsData: {
       configCard: {
         title: "Design Web",
@@ -294,74 +207,11 @@ export default {
         labels: labels,
       },
     },
-    html: `<template>
-  <tv-card
-    @click-label="handleLabel"
-    @click-button="handleButton"
-    @click-secondary-button="handleSecondaryButton"
-    :configCard="configCard"
-  />
-</template>
-
-<script>
-import { ref } from "vue";
-import TvCard from "todovue-card";
-
-export default {
-  name: "Demo",
-  components: {
-    TvCard,
-  },
-  setup() {
-    const configCard = ref({
-      title: "Design Web",
-      description: "Web design encompasses many different skills...",
-      primaryButtonText: "View code",
-      secondaryButtonText: "View blog",
-      image: "https://todovue.com/web-design.webp",
-      labels: [
-        {
-          id: 1,
-          name: "JavaScript",
-          color: "#F7DF1E",
-        },
-        {
-          id: 2,
-          name: "HTML",
-          color: "#E34F26",
-        },
-        {
-          id: 3,
-          name: "CSS",
-          color: "#1572B6",
-        }
-      ],
-    });
-
-    const handleLabel = (label) => {
-      console.log(label);
-    }
-    
-    const handleButton = () => {
-      console.log("Button clicked");
-    }
-    
-    const handleSecondaryButton = () => {
-      console.log("Secondary button clicked");
-    }
-    
-    return {
-      configCard,
-      handleButton,
-      handleLabel,
-      handleSecondaryButton
-    }
-  }
-</script>`,
+    html: WithTwoButtons,
   },
   {
     id: 4,
-    title: "TvCard with custom colors",
+    title: "With custom colors",
     propsData: {
       configCard: {
         title: "Write Vue.js",
@@ -381,80 +231,11 @@ export default {
         colorButtonSecondary: "#000000",
       },
     },
-    html: `<template>
-  <tv-card
-    @click-label="handleLabel"
-    @click-button="handleButton"
-    @click-secondary-button="handleSecondaryButton"
-    :configCard="configCard"
-  />
-</template>
-
-<script>
-import { ref } from "vue";
-import TvCard from "todovue-card";
-
-export default {
-  name: "Demo",
-  components: {
-    TvCard,
-  },
-  setup() {
-    const configCard = ref({
-      title: "Write Vue.js",
-      description: "Vue.js (commonly known as Vue; pronounced /vjuː/, like 'view')...",
-      primaryButtonText: "View code",
-      secondaryButtonText: "View blog",
-      image: "https://todovue.com/vuejs.webp",
-      labels: [
-        {
-          id: 1,
-          name: "JavaScript",
-          color: "#F7DF1E",
-        },
-        {
-          id: 2,
-          name: "HTML",
-          color: "#E34F26",
-        },
-        {
-          id: 3,
-          name: "CSS",
-          color: "#1572B6",
-        },
-      ],
-      backgroundColor: "#46627f",
-      color: "#ffffff",
-      backgroundButtonColor: "#062131",
-      colorButton: "#ffffff",
-      backgroundButtonSecondaryColor: "#0eb096",
-      colorButtonSecondary: "#000000",
-    });
-    
-    const handleLabel = (label) => {
-      console.log(label);
-    }
-    
-    const handleButton = () => {
-      console.log("Button clicked");
-    }
-    
-    const handleSecondaryButton = () => {
-      console.log("Secondary button clicked");
-    }
-    
-    return {
-      configCard,
-      handleButton,
-      handleLabel,
-      handleSecondaryButton
-    }
-  }
-</script>`,
+    html: WithCustomColors,
   },
   {
     id: 5,
-    title: "TvCard with multiple labels (default 3) with limitLabels",
+    title: "With multiple labels (default 3) with limitLabels",
     propsData: {
       configCard: {
         title: "Write JavaScript",
@@ -468,55 +249,6 @@ export default {
         limitLabels: 10,
       },
     },
-    html: `<template>
-  <tv-card
-    @click-label="handleLabel"
-    @click-button="handleButton"
-    :configCard="configCard"
-  />
-</template>
-
-<script>
-import { ref } from "vue";
-import TvCard from "todovue-card";
-
-export default {
-  name: "Demo",
-  components: {
-    TvCard,
-  },
-  setup() {
-    const configCard = ref({
-      title: "Write JavaScript",
-      description: "JavaScript, often abbreviated as JS...",
-      primaryButtonText: "See more",
-      image: "https://todovue.com/javascript.webp",
-      labels: [
-        {
-          id: 1,
-          name: "JavaScript",
-          color: "#F7DF1E",
-        },
-        ...
-      ],
-      limitLabels: 10,
-    });
-    
-    const handleLabel = (label) => {
-      console.log(label);
-    }
-    
-    const handleButton = () => {
-      console.log("Button clicked");
-    }
-    
-    return {
-      configCard,
-      handleButton,
-      handleLabel
-    }
-  }
-}
-</script>`,
+    html: WithMultipleLabels,
   },
 ];
