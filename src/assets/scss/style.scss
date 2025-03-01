@@ -1,0 +1,118 @@
+@use "mixins.scss";
+@use "variables.scss";
+
+%alignCenterFlex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.tv-card {
+  @include mixins.backgroundColorAndTextColor(variables.$dark-card-bg, variables.$dark-text);
+
+  &-title {
+    background: variables.$dark-card-bg;
+    min-height: 60px;
+    max-height: 85px;
+    line-height: 1.4;
+    text-align: center;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    word-wrap: break-word;
+    border-radius: 10px;
+  }
+}
+
+.tv-card-body {
+  max-width: 300px;
+  align-items: center;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  & .tv-card {
+    @extend %alignCenterFlex;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 30px;
+    padding-top: 170px;
+
+    &-image {
+      position: absolute;
+      height: 180px;
+      min-width: 300px;
+      overflow: hidden;
+      top: -30px;
+
+      & img {
+        border-radius: 30px 30px 0 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 0 10px;
+      }
+    }
+
+    &-content {
+      @extend %alignCenterFlex;
+      position: relative;
+      flex-direction: column;
+      margin-top: 10px;
+      min-height: 150px;
+
+      & .tv-card-title {
+        border-radius: 30px 30px 0 0;
+        position: absolute;
+        width: 85%;
+        padding: 12px 0;
+        text-align: center;
+        top: -50px;
+      }
+
+      & .tv-card-label {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+        padding: 0 10px;
+        margin-top: 10px;
+      }
+
+      & .tv-card-description {
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        padding: 15px;
+        text-align: center;
+      }
+    }
+    & .tv-card-action {
+      position: relative;
+      width: 100%;
+      bottom: 20px;
+      display: flex;
+      justify-content: center;
+
+      & .tv-card-button {
+        position: absolute;
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+  .tv-pt-0 {
+    padding-top: 0 !important;
+  }
+}
