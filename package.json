@@ -49,9 +49,12 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
+    "@todovue/tvbutton": "^1.1.0",
+    "@todovue/tvlabel": "^1.0.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@todovue/tvdemo": "^1.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "sass": "^1.85.0",
     "vite": "^5.2.0",

@@ -1,0 +1,47 @@
+<template>
+  <tv-card
+    @click-label="handleLabel"
+    @click-button="handleButton"
+    :configCard="configCard"
+  />
+</template>
+
+<script setup>
+import { defineAsyncComponent, ref } from 'vue';
+
+const TvCard = defineAsyncComponent(() => import('../../components/TvCard.vue'));
+
+const configCard = ref({
+  title: 'Write JavaScript',
+  description: 'JavaScript, often abbreviated as JS...',
+  primaryButtonText: 'See more',
+  alt: 'Card Image',
+  image: 'https://todovue.com/code.webp',
+  labels: [
+    {
+      id: 1,
+      name: 'JavaScript',
+      color: '#F7DF1E',
+    },
+    {
+      id: 2,
+      name: 'HTML',
+      color: '#E34F26',
+    },
+    {
+      id: 3,
+      name: 'CSS',
+      color: '#1572B6',
+
+    }
+  ],
+});
+
+const handleLabel = (label) => {
+  console.log(label);
+};
+
+const handleButton = () => {
+  console.log('Button clicked');
+};
+</script>
