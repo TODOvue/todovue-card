@@ -44,7 +44,7 @@ const { handleClickLabel, handleClick, handleSecondaryClick, card } = useCard(pr
       <div class="tv-card-action">
         <div class="tv-card-button">
           <tv-button
-            @clickButton="handleClick"
+            @click="handleClick"
             rounded
             :class="{ 'tv-btn-small': card.secondaryButtonText }"
             :customStyle="card.customStyleButton"
@@ -52,7 +52,7 @@ const { handleClickLabel, handleClick, handleSecondaryClick, card } = useCard(pr
             {{ card.primaryButtonText }}
           </tv-button>
           <tv-button
-            @clickButton="handleSecondaryClick"
+            @click="handleSecondaryClick"
             isRounded
             v-if="card.secondaryButtonText"
             isInfo

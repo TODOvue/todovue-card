@@ -8,9 +8,8 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref } from 'vue';
-
-const TvCard = defineAsyncComponent(() => import('../../components/TvCard.vue'));
+import { ref } from 'vue';
+import TvCard from '@todovue/tvcard';
 
 const configCard = ref({
   title: 'Design Web',
