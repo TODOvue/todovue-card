@@ -14,9 +14,9 @@
 - [Events](#events)
 - [Customize](#customize)
 - [Development](#development)
-- [Changelog](https://github.com/TODOvue/todovue-card/blob/master/CHANGELOG.md)
-- [Contributing](https://github.com/TODOvue/todovue-card/blob/master/CONTRIBUTING.md)
-- [License](https://github.com/TODOvue/todovue-demo/card/master/LICENSE)
+- [Changelog](https://github.com/TODOvue/todovue-card/blob/main/CHANGELOG.md)
+- [Contributing](https://github.com/TODOvue/todovue-card/blob/main/CONTRIBUTING.md)
+- [License](https://github.com/TODOvue/todovue-demo/card/main/LICENSE)
 
 ## Installation
 Install with npm or yarn
@@ -28,14 +28,14 @@ yarn add @todovue/tvcard
 ```
 Import
 ```js
-import { TvCard } from '@todovue/tvcard'
+import TvCard from '@todovue/tvcard'
 ```
 
 You can also import it directly in the **main.js** file, so you don't have to import it in the pages
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
-import { TvCard } from "@todovue/tvcard"
+import TvCard from "@todovue/tvcard"
 
 const app = createApp(App);
 app.component("TvCard", TvCard);
@@ -52,7 +52,7 @@ app.mount("#app");
 
 <script setup>
 import { ref } from "vue";
-import { TvCard } from "@todovue/tvcard"
+import TvCard from "@todovue/tvcard"
 
 const configCard = ref({
   title: "Create Vue.js",
@@ -123,7 +123,7 @@ const configCard = ref({
 
 <script setup>
 import { ref } from "vue";
-import { TvCard } from "@todovue/tvcard"
+import TvCard from "@todovue/tvcard"
 
 const configCard = ref({
   title: "Create Vue.js",
@@ -147,31 +147,9 @@ const handleButton = () => {
 Clone the repository and install the dependencies
 ```bash
 git clone https://github.com/TODOvue/todovue-card.git
-```
-```bash
 cd todovue-card
-```
-
-Install the dependencies
-```bash
 yarn install
 ```
-Run the project
-```bash
-yarn demo
-```
-Run the tests
-```bash
-yarn test:unit
-```
-Run the linter
-```bash
-yarn lint
-```
-Run the build It is not necessary to generate build, since it is generated when you do PR to the master branch
-```bash
-yarn build
-```
-
+---
 ## License
-[MIT](https://github.com/TODOvue/todovue-card/blob/master/LICENSE)
+[MIT](https://github.com/TODOvue/todovue-card/blob/main/LICENSE)
